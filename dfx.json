@@ -1,12 +1,18 @@
 {
   "canisters": {
-    "ICP-Staking-backend": {
+    "backend": {
       "main": "src/ICP-Staking-backend/main.mo",
-      "type": "motoko"
+      "type": "motoko",
+      "dependencies": ["icrc1_ledger_canister"]
     },
-    "ICP-Staking-frontend": {
+    "icrc1_ledger_canister": {
+      "type": "custom",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/30a4021d7463e4e9ee96b3f279cf38e01b1028ca/rs/rosetta-api/icrc1/ledger/ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/30a4021d7463e4e9ee96b3f279cf38e01b1028ca/canisters/ic-icrc1-ledger.wasm.gz"
+    },
+    "frontend": {
       "dependencies": [
-        "ICP-Staking-backend"
+        "backend"
       ],
       "source": [
         "src/ICP-Staking-frontend/dist"
